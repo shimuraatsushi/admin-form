@@ -1,0 +1,22 @@
+# Dockerfile
+FROM ruby:3.4.5-slim
+
+# 必要なパッケージをインストール
+RUN apt update -qq && \
+    apt install --no-install-recommends -y curl default-mysql-client libjemalloc2 libvips build-essential default-libmysqlclient-dev libyaml-dev && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# 作業ディレクトリを設定
+WORKDIR /app
+
+# GemfileとGemfile.lockをコピー
+COPY Gemfile Gemfile.lock  ./
+
+# gemをインストール
+RUN bundle install
+
+# ソースコードをコピー
+COPY . .
+
+# ポートを指定
+EXPOSE 3000
