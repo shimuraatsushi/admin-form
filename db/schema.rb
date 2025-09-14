@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_13_231718) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_14_003337) do
   create_table "business_partners", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "phone_number"
@@ -21,10 +21,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_13_231718) do
     t.index ["user_id"], name: "index_business_partners_on_user_id"
   end
 
+  create_table "sales", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "business_partner_id", null: false
+    t.integer "month"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_partner_id"], name: "index_sales_on_business_partner_id"
+    t.index ["user_id"], name: "index_sales_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "sales", "business_partners"
+  add_foreign_key "sales", "users"
 end
