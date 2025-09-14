@@ -3,11 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-      args:
-        USER_ID: ${USER_ID:-1000}
-        GROUP_ID: ${GROUP_ID:-1000}
     command: bundle exec rails server -p 3000 -b '0.0.0.0'
-    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
+    user: "${UID}:${GID}"
     volumes:
       - .:/app
     ports:
