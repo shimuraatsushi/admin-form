@@ -1,0 +1,18 @@
+
+<h3>詳細</h3>
+
+<%= @user.name %><br>
+<%= @user.age %><br>
+
+
+<h3>担当</h3>
+<% @user.business_partners.each do |partner| %>
+  <%= partner.name %><br>
+  <%= partner.phone_number %><br>
+  <%= partner.email %><br>
+  <h4>売上</h4>
+  <% partner.sales.each do |sale| %>
+    <%= "#{sale.month} 月" %>
+    <%= "¥#{sale.price.to_formatted_s(:delimited)}" %>
+  <% end %>
+<% end %>

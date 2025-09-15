@@ -1,0 +1,5 @@
+<% @sales_items.each do |sales_item| %>
+  <%= sales_item.id %>
+  <%= sales_item.name %>
+  <%= link_to "詳細", admin_sales_item_path(sales_item) %>
+<% end %>

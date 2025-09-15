@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :business_partners
+    resources :sales_items
   end
 end

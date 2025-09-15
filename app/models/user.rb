@@ -3,4 +3,5 @@ class User < ApplicationRecord
   validates :age, presence: true, numericality: { only_integer: true }
 
   has_many :business_partners
+  has_many :sales
 end

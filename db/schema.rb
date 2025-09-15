@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_14_003337) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_15_000319) do
   create_table "business_partners", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "phone_number"
@@ -25,11 +25,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_14_003337) do
     t.bigint "user_id", null: false
     t.bigint "business_partner_id", null: false
     t.integer "month"
+    t.bigint "sales_item_id"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["business_partner_id"], name: "index_sales_on_business_partner_id"
+    t.index ["sales_item_id"], name: "index_sales_on_sales_item_id"
     t.index ["user_id"], name: "index_sales_on_user_id"
+  end
+
+  create_table "sales_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

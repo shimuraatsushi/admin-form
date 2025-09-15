@@ -4,4 +4,5 @@ class BusinessPartner < ApplicationRecord
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   belongs_to :user
+  has_many :sales
 end
