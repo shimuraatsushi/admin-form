@@ -1,0 +1,5 @@
+<%= form_with url: admin_sales_items_path(@sales_item), model: @sales_item, method: :post do |form|  %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.submit "作成" %>
+<% end %>
