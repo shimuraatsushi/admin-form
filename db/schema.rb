@@ -24,9 +24,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_15_000319) do
   create_table "sales", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "business_partner_id", null: false
-    t.integer "month"
+    t.integer "month", null: false
     t.bigint "sales_item_id"
-    t.integer "price"
+    t.integer "quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["business_partner_id"], name: "index_sales_on_business_partner_id"
@@ -35,7 +35,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_15_000319) do
   end
 
   create_table "sales_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
+    t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
